@@ -13,25 +13,27 @@
   <link rel="stylesheet" href="landing.css">
 </head>
 <body>
-  <header class="hero">
-    <img class="logo" src="selldial-logo-full.png" alt="Selldial" width="1163" height="327">
+  <div class="page">
+    <header class="top">
+      <img class="logo" src="selldial-logo-full.png" alt="Selldial" width="1163" height="327">
+    </header>
 
-    <h1 class="headline">The <em>cell</em> line that helps customers buy.</h1>
+    <main class="hero">
+      <h1 class="headline">The <em>cell</em> line that helps customers buy.</h1>
 
-    <div class="signin">
-      <a class="btn primary" href="console.html#/home">
-        <svg class="tmark" viewBox="0 0 48 48" aria-hidden="true">
-          <rect x="7" y="22" width="6" height="6" rx="1"/>
-          <rect x="35" y="22" width="6" height="6" rx="1"/>
-          <path d="M11 9h26v8h-3.2c-.4-2.6-1.8-3.8-4.6-3.8H27V35c0 2.3.8 3 3.3 3V41H17.7v-3c2.5 0 3.3-.7 3.3-3V13.2h-2.2c-2.8 0-4.2 1.2-4.6 3.8H11Z"/>
-        </svg>
-        <span>Log in with T&#8209;Mobile</span>
-      </a>
-      <a class="btn secondary" href="console.html#/home">Log in via another provider</a>
-    </div>
-  </header>
+      <div class="signin">
+        <a class="btn primary" href="console.html#/home">
+          <svg class="tmark" viewBox="0 0 48 48" aria-hidden="true">
+            <rect x="7" y="22" width="6" height="6" rx="1"/>
+            <rect x="35" y="22" width="6" height="6" rx="1"/>
+            <path d="M11 9h26v8h-3.2c-.4-2.6-1.8-3.8-4.6-3.8H27V35c0 2.3.8 3 3.3 3V41H17.7v-3c2.5 0 3.3-.7 3.3-3V13.2h-2.2c-2.8 0-4.2 1.2-4.6 3.8H11Z"/>
+          </svg>
+          <span>Log in with T&#8209;Mobile</span>
+        </a>
+        <a class="btn secondary" href="console.html#/home">Log in via another provider</a>
+      </div>
+    </main>
 
-  <main>
     <!-- A static rendering of the console's report for a declined purchase. Same data as conversation c_1027. -->
     <section class="showcase" aria-label="Example: the report for a declined purchase">
       <article class="panel">
@@ -47,9 +49,7 @@
           <div class="summary">
             <span class="chip"><span class="dot bad" aria-hidden="true"></span>Not paid</span>
             <p class="lede">Taylor tried to buy a Galaxy Z Fold 7. The owner declined, so it was not paid.</p>
-            <p class="label">What the customer wanted</p>
-            <p class="title">Galaxy Z Fold 7</p>
-            <p class="small">“I want the Fold 7. Can you set it up?”</p>
+            <p class="small wanted"><b>Wanted: Galaxy Z Fold 7.</b> “I want the Fold 7. Can you set it up?”</p>
           </div>
 
           <ol class="timeline" aria-label="Decision timeline">
@@ -91,15 +91,14 @@
       </article>
     </section>
 
-    <ul class="trust">
-      <li>Anything over the owner’s limit waits for their yes.</li>
-      <li>Every recommendation shows its reasons and a runner-up.</li>
-      <li>Every step is written to an audit log.</li>
-    </ul>
-  </main>
-
-  <footer class="note">
-    <p>Demo sign-in: no credentials are collected. All customer data is synthetic.</p>
-  </footer>
+    <footer class="foot">
+      <ul class="trust">
+        <li>Over-limit buys wait for the owner’s yes.</li>
+        <li>Every pick shows its reasons and a runner-up.</li>
+        <li>Every step is logged.</li>
+      </ul>
+      <p class="note">Demo sign-in: no credentials collected. All customer data is synthetic.</p>
+    </footer>
+  </div>
 </body>
 </html>
