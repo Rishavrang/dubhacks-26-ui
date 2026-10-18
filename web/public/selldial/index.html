@@ -4,46 +4,102 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Selldial</title>
+  <meta name="description" content="The cell line that helps customers buy.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="icon" href="selldial-logo-icon.png" type="image/png">
   <link rel="stylesheet" href="tokens.css">
   <link rel="stylesheet" href="landing.css">
 </head>
 <body>
-  <div class="page">
-    <header class="top">
-      <img class="logo" src="selldial-logo-full.png" alt="Selldial" width="1163" height="327">
-    </header>
+  <header class="hero">
+    <img class="logo" src="selldial-logo-full.png" alt="Selldial" width="1163" height="327">
 
-    <main class="copy">
-      <h1 class="headline">The sell line <span>that helps customers buy.</span></h1>
-      <div class="signin">
-        <a class="btn primary" href="console.html#/home">
-          <svg class="tmark" viewBox="0 0 48 48" aria-hidden="true">
-            <rect x="7" y="22" width="6" height="6" rx="1"/>
-            <rect x="35" y="22" width="6" height="6" rx="1"/>
-            <path d="M11 9h26v8h-3.2c-.4-2.6-1.8-3.8-4.6-3.8H27V35c0 2.3.8 3 3.3 3V41H17.7v-3c2.5 0 3.3-.7 3.3-3V13.2h-2.2c-2.8 0-4.2 1.2-4.6 3.8H11Z"/>
-          </svg>
-          <span>Log in with T&#8209;Mobile</span>
-        </a>
-        <a class="btn secondary" href="console.html#/home">Log in via another provider</a>
-      </div>
-    </main>
+    <h1 class="headline">The <em>cell</em> line that helps customers buy.</h1>
 
-    <footer class="note">
-      <p>Demo sign-in: no credentials are collected. All customer data is synthetic.</p>
-    </footer>
-
-    <div class="stage">
-      <div class="composition">
-        <img class="shot-card" src="landing-needs-review.webp" alt="The Needs review list in the Selldial console: three calls that went badly, each with a one-line reason." width="1313" height="513">
-        <div class="shot-drawer">
-          <img src="landing-report.webp" alt="A call report in the console: the owner declined a $1,899.99 purchase, so it was not paid." width="838" height="1385">
-        </div>
-      </div>
+    <div class="signin">
+      <a class="btn primary" href="console.html#/home">
+        <svg class="tmark" viewBox="0 0 48 48" aria-hidden="true">
+          <rect x="7" y="22" width="6" height="6" rx="1"/>
+          <rect x="35" y="22" width="6" height="6" rx="1"/>
+          <path d="M11 9h26v8h-3.2c-.4-2.6-1.8-3.8-4.6-3.8H27V35c0 2.3.8 3 3.3 3V41H17.7v-3c2.5 0 3.3-.7 3.3-3V13.2h-2.2c-2.8 0-4.2 1.2-4.6 3.8H11Z"/>
+        </svg>
+        <span>Log in with T&#8209;Mobile</span>
+      </a>
+      <a class="btn secondary" href="console.html#/home">Log in via another provider</a>
     </div>
-  </div>
+  </header>
+
+  <main>
+    <!-- A static rendering of the console's report for a declined purchase. Same data as conversation c_1027. -->
+    <section class="showcase" aria-label="Example: the report for a declined purchase">
+      <article class="panel">
+        <div class="panel-head">
+          <div>
+            <h2 class="who">Taylor N.</h2>
+            <p class="sub">Text · 2h 45m ago</p>
+          </div>
+          <span class="pos mono">3 of 40</span>
+        </div>
+
+        <div class="panel-body">
+          <div class="summary">
+            <span class="chip"><span class="dot bad" aria-hidden="true"></span>Not paid</span>
+            <p class="lede">Taylor tried to buy a Galaxy Z Fold 7. The owner declined, so it was not paid.</p>
+            <p class="label">What the customer wanted</p>
+            <p class="title">Galaxy Z Fold 7</p>
+            <p class="small">“I want the Fold 7. Can you set it up?”</p>
+          </div>
+
+          <ol class="timeline" aria-label="Decision timeline">
+            <li class="step done">
+              <span class="mark"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span>
+              <div>
+                <p class="label">Verified</p>
+                <p class="title">Caller verified</p>
+                <p class="small">The caller passed the PIN check.</p>
+              </div>
+            </li>
+            <li class="step done">
+              <span class="mark"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span>
+              <div>
+                <p class="label">Recommended</p>
+                <p class="title">Galaxy Z Fold 7</p>
+                <p class="small body">She asked for a foldable, and the Fold 7 is the current model with the best trade-in offer.</p>
+                <p class="small"><b>Runner-up:</b> Galaxy S26 Ultra at $1,299.99, if the price is the concern.</p>
+              </div>
+            </li>
+            <li class="step bad">
+              <span class="mark"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg></span>
+              <div>
+                <p class="label">Owner approval</p>
+                <p class="title">Declined</p>
+                <p class="small">Asked Riley N. to approve <span class="num">$1,899.99</span>. The limit is <span class="num">$1,500.00</span>. Declined 9 minutes later.</p>
+              </div>
+            </li>
+            <li class="step bad">
+              <span class="mark"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg></span>
+              <div>
+                <p class="label">Payment</p>
+                <p class="title row">Not paid <span class="num">$1,899.99</span> <span class="chip">Mock</span></p>
+                <p class="small">The owner declined, so the agent did not charge.</p>
+              </div>
+            </li>
+          </ol>
+        </div>
+      </article>
+    </section>
+
+    <ul class="trust">
+      <li>Anything over the owner’s limit waits for their yes.</li>
+      <li>Every recommendation shows its reasons and a runner-up.</li>
+      <li>Every step is written to an audit log.</li>
+    </ul>
+  </main>
+
+  <footer class="note">
+    <p>Demo sign-in: no credentials are collected. All customer data is synthetic.</p>
+  </footer>
 </body>
 </html>
