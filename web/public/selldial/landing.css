@@ -1,30 +1,33 @@
-/* Landing: copy on the left, a real piece of the console on the right. One faint wash behind the product. */
+/* Landing, direction B: copy and sign-in on the left, the product on the right as the hero.
+ * The two panels are static markup (no live data) so they stay crisp at any size.
+ */
 body {
   min-height: 100vh;
   background:
-    radial-gradient(ellipse 55% 60% at 78% 40%, color-mix(in oklch, var(--color-accent-wash) 40%, transparent), transparent 70%),
+    radial-gradient(ellipse 50% 55% at 74% 46%, color-mix(in oklch, var(--color-accent-wash) 45%, transparent), transparent 72%),
     var(--color-bg);
 }
 
 .page {
-  position: relative; min-height: 100vh; display: grid; overflow: clip; align-items: center;
-  grid-template-columns: minmax(0, 5fr) minmax(0, 8fr);
-  grid-template-areas: "copy stage";
+  min-height: 100vh; display: grid; overflow: clip;
+  grid-template-columns: minmax(0, 4fr) minmax(0, 8fr);
+  grid-template-rows: 1fr auto;
+  grid-template-areas: "copy stage" "note stage";
+  column-gap: clamp(var(--space-lg), 4vw, 4rem);
+  padding-inline: clamp(var(--space-sm), 5vw, 5rem);
 }
 
-.top, .copy, .note { padding-inline: clamp(var(--space-sm), 5vw, 5rem) var(--space-md); }
-.top { position: absolute; top: 0; left: 0; padding-top: var(--space-lg); }
-.logo { display: block; height: 36px; width: auto; }
-
-.copy { grid-area: copy; padding-block: var(--space-xl); }
+/* ---------- Copy ---------- */
+.copy { grid-area: copy; align-self: center; padding-block: var(--space-xl) var(--space-md); }
+.logo { display: block; height: 28px; width: auto; margin-bottom: var(--space-xl); }
 .headline {
-  margin: 0; max-width: 13ch;
-  font: 600 clamp(2rem, 1.2rem + 2.2vw, var(--text-2xl))/1.08 var(--font-display);
-  letter-spacing: -0.02em; color: var(--color-ink); text-wrap: balance;
+  margin: 0; max-width: 15ch;
+  font: 500 clamp(1.75rem, 1.1rem + 1.6vw, var(--text-2xl))/1.04 var(--font-display);
+  letter-spacing: -0.025em; color: var(--color-ink); text-wrap: balance;
 }
-.headline span { color: var(--color-muted); }
+.lede { margin: var(--space-sm) 0 0; max-width: 40ch; color: var(--color-muted); text-wrap: pretty; }
 
-.signin { display: flex; flex-wrap: wrap; gap: var(--space-2xs); margin-top: var(--space-lg); }
+.signin { display: flex; flex-wrap: wrap; gap: var(--space-2xs); margin-top: var(--space-md); }
 .btn {
   display: inline-flex; align-items: center; justify-content: center; gap: var(--space-2xs); height: 36px; padding: 0 var(--space-sm);
   font-size: var(--text-sm); font-weight: 500; line-height: 1; white-space: nowrap; text-decoration: none;
@@ -37,32 +40,100 @@ body {
 .btn.secondary:hover { background: var(--color-raised); }
 .tmark { width: 18px; height: 18px; fill: currentColor; flex: none; }
 
-.note { position: absolute; bottom: 0; left: 0; padding-block: var(--space-md); }
+/* A short technical spec list; violet is the quiet marker */
+.specs { list-style: none; margin: var(--space-lg) 0 0; padding: var(--space-sm) 0 0; border-top: 1px solid var(--color-rule); display: grid; gap: var(--space-2xs); max-width: 26rem; font-size: var(--text-xs); color: var(--color-ink-2); }
+.specs li { display: grid; grid-template-columns: 6.5rem 1fr; align-items: baseline; }
+.specs .k { font: 500 var(--text-xs) var(--font-mono); color: var(--color-violet); }
+.specs .k::before { content: ""; display: inline-block; width: 4px; height: 4px; margin: 0 var(--space-2xs) 2px 0; border-radius: 1px; background: currentColor; }
+
+.note { grid-area: note; padding-block: var(--space-md); }
 .note p { margin: 0; max-width: 42ch; font-size: var(--text-xs); color: var(--color-muted); }
 
-/* The product: the Needs review card and the call report side by side at one scale, both fully visible. */
-.stage { grid-area: stage; container-type: inline-size; padding: var(--space-xl) var(--space-md) var(--space-xl) 0; }
-.composition { display: flex; align-items: center; justify-content: space-between; gap: 3cqw; }
-.shot-card { display: block; width: 59cqw; height: auto; border: 1px solid var(--color-rule); border-radius: var(--radius-card); }
-.shot-drawer { width: 38cqw; background: var(--color-surface); border: 1px solid var(--color-rule); border-radius: var(--radius-card); overflow: clip; }
-.shot-drawer img { display: block; width: 100%; height: auto; }
-@container (max-width: 599px) {
-  .composition { flex-direction: column; align-items: stretch; gap: var(--space-sm); }
-  .shot-card, .shot-drawer { width: 100%; }
+/* ---------- Product panels ---------- */
+.stage {
+  grid-area: stage; align-self: center; margin: 0; padding-block: var(--space-xl);
+  position: relative; container-type: inline-size;
+  display: grid; grid-template-columns: repeat(12, minmax(0, 1fr));
+}
+.panel {
+  background: var(--color-surface); border: 1px solid color-mix(in oklch, var(--color-ink) 9%, transparent);
+  border-radius: var(--radius-card); overflow: clip; font-size: var(--text-xs); color: var(--color-ink-2);
+}
+.panel-head { display: flex; align-items: center; justify-content: space-between; gap: var(--space-xs); padding: var(--space-xs) var(--space-sm); border-bottom: 1px solid var(--color-rule); }
+.panel-title { font: 500 var(--text-md)/1.2 var(--font-display); letter-spacing: -0.02em; color: var(--color-ink); }
+.meta { display: block; margin-top: 2px; color: var(--color-muted); }
+.mono { font-family: var(--font-mono); font-size: inherit; font-variant-numeric: tabular-nums; }
+
+/* Conversations list sits behind, upper left */
+.list { grid-column: 1 / span 9; grid-row: 1; align-self: start; }
+.filter { height: 24px; display: inline-flex; align-items: center; padding: 0 var(--space-2xs); border: 1px solid var(--color-rule); border-radius: var(--radius-pill); color: var(--color-ink-2); }
+.row {
+  display: grid; grid-template-columns: 1.1fr 0.7fr 2fr 1.35fr 0.9fr; align-items: center; gap: var(--space-2xs);
+  height: 38px; padding: 0 var(--space-sm); border-bottom: 1px solid color-mix(in oklch, var(--color-rule) 70%, transparent);
+  white-space: nowrap;
+}
+.row > * { overflow: hidden; text-overflow: ellipsis; }
+.row:last-child { border-bottom: 0; }
+.row.head { height: 32px; color: var(--color-muted); background: var(--color-bg); }
+.row b { font-weight: 500; color: var(--color-ink); }
+.row .c-ch, .row .c-time { color: var(--color-muted); }
+.row .c-time { text-align: right; }
+.row.selected { background: var(--color-violet-wash); box-shadow: inset 2px 0 0 var(--color-accent); }
+
+.chip { display: inline-flex; align-items: center; gap: 6px; justify-self: start; height: 22px; padding: 0 var(--space-2xs) 0 6px; border: 1px solid var(--color-rule); border-radius: var(--radius-pill); color: var(--color-ink-2); white-space: nowrap; }
+.dot { width: 6px; height: 6px; border-radius: 50%; flex: none; }
+.dot.save { background: var(--color-save); }
+.dot.guard { background: var(--color-guard); }
+.dot.block { background: var(--color-block); }
+
+/* The open report floats in front, lower right; only floating things get a shadow */
+.report {
+  grid-column: 7 / span 6; grid-row: 1; align-self: start; margin-top: 18cqw; position: relative;
+  border-color: color-mix(in oklch, var(--color-ink) 13%, transparent);
+  box-shadow: 0 2px 32px oklch(5% 0.02 320 / 0.5);
+}
+.pos { color: var(--color-muted); }
+.report-body { padding: var(--space-sm); display: flex; flex-direction: column; align-items: flex-start; gap: var(--space-xs); }
+.summary { margin: 0; font: 500 var(--text-sm)/1.35 var(--font-display); letter-spacing: -0.01em; color: var(--color-ink); }
+
+.timeline { list-style: none; margin: var(--space-3xs) 0 0; padding: var(--space-xs) 0 0; border-top: 1px solid var(--color-rule); width: 100%; display: flex; flex-direction: column; }
+.step { position: relative; display: flex; gap: var(--space-xs); padding-bottom: var(--space-sm); }
+.step:last-child { padding-bottom: 0; }
+.step::before { content: ""; position: absolute; left: 9.5px; top: 22px; bottom: 2px; width: 1px; background: var(--color-violet); opacity: .5; }
+.step:last-child::before { display: none; }
+.mark { flex: none; width: 20px; height: 20px; border-radius: 50%; display: grid; place-items: center; border: 1px solid currentColor; color: var(--color-violet); background: var(--color-surface); }
+.mark svg { width: 10px; height: 10px; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+.step.ok .mark { color: var(--color-save); }
+.step.bad .mark { color: var(--color-block); }
+.step > div { min-width: 0; display: flex; flex-direction: column; gap: 2px; }
+.step .label { font: 500 10px/1.4 var(--font-mono); letter-spacing: 0.06em; text-transform: uppercase; color: var(--color-muted); }
+.step b { font-weight: 500; color: var(--color-ink); display: inline-flex; align-items: center; flex-wrap: wrap; gap: var(--space-2xs); }
+.step .amt { font-weight: 500; }
+.step .why { color: var(--color-muted); }
+.step em { font-style: normal; color: var(--color-ink-2); }
+.tag { height: 18px; display: inline-flex; align-items: center; padding: 0 6px; border: 1px solid var(--color-rule); border-radius: var(--radius-pill); font-size: 11px; font-weight: 400; color: var(--color-muted); }
+
+/* Narrow stage: drop the secondary columns so no cell wraps */
+@container (max-width: 640px) {
+  .row { grid-template-columns: 1fr 1.6fr 1.1fr; }
+  .row .c-ch, .row .c-about { display: none; }
+  .list { grid-column: 1 / -1; }
+  .report { grid-column: 2 / -1; margin-top: 360px; } /* just under the selected row */
 }
 
-@media (max-width: 899px) {
-  .page { grid-template-columns: minmax(0, 1fr); grid-template-areas: "top" "copy" "stage" "note"; align-items: start; }
-  .top, .note { position: static; }
-  .top { grid-area: top; }
-  .note { grid-area: note; }
-  .top, .copy, .note { padding-inline: var(--space-sm); }
-  .top { padding-top: var(--space-md); }
-  .copy { padding-block: var(--space-lg) var(--space-md); }
-  .headline { max-width: 14ch; }
+/* ---------- Phones and tablets ---------- */
+@media (max-width: 999px) {
+  .page {
+    grid-template-columns: minmax(0, 1fr); grid-template-rows: auto auto auto;
+    grid-template-areas: "copy" "stage" "note"; padding-inline: var(--space-sm);
+  }
+  .copy { padding-block: var(--space-lg) var(--space-sm); }
+  .logo { margin-bottom: var(--space-lg); }
+  .stage { padding-block: var(--space-md) 0; }
+}
+@media (max-width: 599px) {
   .signin { flex-direction: column; align-items: stretch; }
   .btn { height: 44px; }
-  .stage { padding: var(--space-sm) var(--space-sm) 0; }
-  .note { padding-block: var(--space-md); }
+  .specs li { grid-template-columns: 5.75rem 1fr; }
 }
 @media (prefers-reduced-motion: reduce) { .btn { transition: none; } }

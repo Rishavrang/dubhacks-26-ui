@@ -11,7 +11,7 @@ Follow them for feel, and follow this file where they differ.
 
 - Name: Selldial. Wordmark in Google Sans 700.
 - Logo: a phone outline with a handset and signal marks, plus the "Selldial" wordmark. Files: `selldial-logo-full.png` (icon plus wordmark, landing page) and `selldial-logo-icon.png` (icon only: side rail, About, favicon). It looks the same everywhere. The logo is a pink-to-violet gradient and is the one allowed exception to "no gradients".
-- Tagline: "The sell line that helps customers buy."
+- Tagline: "The cell line that helps customers buy." ("cell" is spelled that way on purpose.)
 - Voice: calm, plain, numerate. A good store employee who is on your side.
 - Tenant name ("T-Mobile demo") appears only as plain text where needed. The "Log in with T-Mobile" button may show T-Mobile's T mark, and only that one button (the original is in git history: `git show main:web/public/selldial/index.html`). Everywhere else: no T-Mobile logo, marks, wordmark or exact magenta (#E20074). Our magenta is our own (token below).
 - All data is synthetic. Say so once, in the About page and the landing footer. Do not repeat it as a badge on every screen.
@@ -103,7 +103,7 @@ The owner approval limit in the synthetic data is **$1,500.00** everywhere (Sett
 
 **About:** a short, well-set page: what Selldial is, how a purchase goes, the trust rules (owner approval, spend limits, audit log). Clean typography, generous space.
 
-**Landing (`index.html`):** one centred column in the dark editorial style (stage 3 builds this): the full logo, a very large display-face headline "The sell line that helps customers buy.", one line of support copy, two compact side-by-side buttons ("Log in with T-Mobile" with the T mark, "Log in via another provider"), then one large, crisp, well-cropped product panel: the report drawer for a declined purchase, with its decision timeline. A faint plum-magenta glow sits behind the panel. A small note at the bottom: "Demo sign-in: no credentials are collected. All customer data is synthetic." No masthead, no diagonal shapes, no second screenshot.
+**Landing (`index.html`), direction B, product-forward:** a split first screen. Left: the full logo, the headline "The cell line that helps customers buy." (display face 500, up to 40px, tight 1.04 leading), one line of support copy, two compact side-by-side buttons ("Log in with T-Mobile" with the T mark, "Log in via another provider"), and a short mono spec list (channels, approval limit, payment labels) with violet keys. Right, as the hero: two large, crisp, slightly overlapping product panels built in static HTML (no images, no live data): the Conversations list behind, with Taylor N. selected, and the open decision-timeline report for that declined purchase in front. Only the front panel has a shadow. A faint plum-magenta glow sits behind the panels. Below 1000px the panels stack under the copy; the list drops its Channel and About columns. A small note at the bottom: "Demo sign-in: no credentials are collected. All customer data is synthetic." No masthead, no diagonal shapes.
 
 ## Components
 
